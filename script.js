@@ -74,37 +74,6 @@ function goleft() {
       slide.style.left = `${index * 100}%`;
     });
   }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 let content = document.querySelectorAll(".content-page");
 // console.log(content);
@@ -145,4 +114,46 @@ function goup() {
     content.forEach((slide, index) => {
       slide.style.top = `${index * 100}%`;
     });
+  }
+  function submit(){
+    document.querySelector(".content-container").classList.add("swap")
+    steps[steps.length-1].classList.add("complete-step");
+    steps[steps.length-1].innerHTML=`<i class="fa-solid fa-check"></i>`;
+    setTimeout(() => {
+      document.querySelector(".content-container").style.transform=`translateY(200%)`;
+      document.querySelector(".processBar-container").style.transform=`translateY(-400%)`;
+      setTimeout(() => {
+        document.querySelector(".content-container").style.display="none";
+        document.querySelector(".processBar-container").style.display="none";
+        document.querySelector(".container").style.display="none";
+        setTimeout(() => {
+          document.querySelector(".main-container").innerHTML=`
+          <div id="navbar" class="navbar">
+        <div class="logo">
+            <h2>Borcelle.</h2>
+        </div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Pricing</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="buttons">
+            <button>Login</button>
+            <button>Sign Up</button>
+        </div>
+    </div>
+    <div id="hero" class="hero">
+        <h1>Welcome to Borcelle</h1>
+        <p>Your trusted partner for digital solutions</p>
+        <button>Get Started</button>
+    </div>`
+    setTimeout(() => {
+        document.getElementById("navbar").classList.add("show-navbar");
+          document.getElementById("hero").classList.add("show-hero");
+      }, 1);
+      }, 700);
+      }, 900);
+    }, 1000);
+
   }
